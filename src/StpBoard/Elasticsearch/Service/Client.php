@@ -28,6 +28,8 @@ class Client
     {
         $curlHandle = curl_init();
         curl_setopt($curlHandle, CURLOPT_URL, sprintf('%s?%s', $url, http_build_query($parameters)));
+        curl_setopt($curlHandle, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
         $data = curl_exec($curlHandle);
 
         curl_close($curlHandle);

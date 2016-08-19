@@ -116,7 +116,7 @@ class ElasticsearchControllerProvider implements ControllerProviderInterface, Bo
             'name' => $name,
             'apiUrl' => $apiUrl,
             'index' => $index,
-            'action' => $action,
+            'metric' => $action,
             'template' => 'chart.html.twig',
             'since' => $since,
         ];

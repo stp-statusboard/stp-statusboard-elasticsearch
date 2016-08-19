@@ -30,7 +30,7 @@ class ElasticsearchService
             $config['apiUrl'],
             [
                 'since' => $config['since'],
-                'action' => $config['action'],
+                'metric' => $config['metric'],
                 'index' => $config['index'],
             ]
         );
