@@ -3,6 +3,7 @@
 namespace StpBoard\Elasticsearch\Service;
 
 use DateTime;
+use DateTimeZone;
 
 class ElasticsearchService
 {
@@ -35,10 +36,14 @@ class ElasticsearchService
             ]
         );
 
+        $currentDate = new DateTime(null, new DateTimeZone('Europe/Warsaw'));
+
         $result = [];
         foreach ($data as $singleStat) {
+            $measuredAt = new DateTime($singleStat['measured_at']);
+
             $result[] = [
-                'x' => 1000 * (new DateTime($singleStat['measured_at']))->getTimestamp(),
+                'x' => 1000 * ($measuredAt->getTimestamp() + $currentDate->getOffset()),
                 'y' => $singleStat['value'],
             ];
         }
